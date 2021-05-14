@@ -8,9 +8,13 @@ use Illuminate\Support\Facades\Route;
 
 class RouteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $routes = Route::getRoutes();
-        return view('admin.routes.index',compact('routes'));
+        return view('admin.routes.index', compact('routes'));
     }
 }

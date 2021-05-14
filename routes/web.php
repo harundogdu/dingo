@@ -20,7 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-/* admins */
+/* admin routes */
 
-Route::get('/admin','Admin\AdminController@index')->name('admin');
-Route::get('/routes','Admin\RouteController@index')->name('routes');
+Route::namespace('Admin')->prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
+    Route::get('/admin', 'AdminController@index')->name('dashboard');
+    Route::get('/routes', 'RouteController@index')->name('routes');
+});
