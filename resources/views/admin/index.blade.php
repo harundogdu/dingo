@@ -311,3 +311,11 @@
         </div>
     </div>
 @endsection
+@section('page-level-scripts')   
+  <!-- Page level plugins -->
+  <script src="{{asset('admins/js/chartjs/Chart.min.js')}}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{{asset('admins/js/demo/chart-area-demo.js')}}"></script>
+  <script src="{{asset('admins/js/demo/chart-pie-demo.js')}}"></script>
+@endsection

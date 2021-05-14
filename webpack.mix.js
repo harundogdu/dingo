@@ -16,6 +16,7 @@ mix.copy('resources/assets/admin/img','public/img');
 mix.copy('resources/assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js.map','public/admins/js');
 mix.copy('resources/assets/admin/vendor/chartjs','public/admins/js/chartjs');
 mix.copy('resources/assets/admin/js/demo','public/admins/js/demo');
+mix.copy('resources/assets/admin/vendor/datatables','public/admins/js/datatables');
 
 /* core dosyaları 'combine()' ile bağlıyoruz */
 mix.js('resources/js/app.js', 'public/js')
