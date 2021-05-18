@@ -24,9 +24,8 @@ class Ancyra
 
         if(checkDBConnection()){
             DB::connection()->disableQueryLog();
-            Helper::getRoles();
+            Helper::setRoles();
         }
-
 
         return $next($request);
     }
