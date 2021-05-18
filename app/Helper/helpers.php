@@ -6,6 +6,7 @@ if (!function_exists('clearAllLogs')) {
         Artisan::call('route:clear');
         Artisan::call('config:clear');
         Artisan::call('cache:clear');
+        Artisan::call('key:generate'); 
     }
 }
 /* check dbconnection  */

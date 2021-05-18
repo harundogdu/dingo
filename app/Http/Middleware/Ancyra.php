@@ -21,6 +21,11 @@ class Ancyra
             DB::connection()->disableQueryLog();
         }
 
+        if(!checkDBConnection() && !$request->is('install')){
+            clearAllLogs();
+            return redirect()->route('install.index');
+        }
+
 
         return $next($request);
     }
