@@ -1,0 +1,72 @@
+{
+    "default_role": {
+        "admin": {
+            "name": "Admin",
+            "slug": "admin",
+            "description": "System Admin",
+            "is_main": 1,
+            "is_see_admin": 1,
+            "guard_name": "web"
+        },
+        "editor": {
+            "name": "Editor",
+            "slug": "editor",
+            "description": "System Editor",
+            "is_main": 1,
+            "is_see_admin": 1,
+            "guard_name": "web"
+        },
+        "user": {
+            "name": "User",
+            "slug": "user",
+            "description": "System User",
+            "is_main": 1,
+            "is_see_admin": 0,
+            "guard_name": "web"
+        }
+    },
+    "default_permission": {
+        "create-user": {
+            "name": "create-user",
+            "is_main": 1,
+            "guard_name": "web"
+        },
+        "edit-user": {
+            "name": "edit-user",
+            "is_main": 1,
+            "guard_name": "web"
+        },
+        "update-user": {
+            "name": "update-user",
+            "is_main": 1,
+            "guard_name": "web"
+        },
+        "delete-user": {
+            "name": "delete-user",
+            "is_main": 1,
+            "guard_name": "web"
+        },
+        "show-user": {
+            "name": "show-user",
+            "is_main": 1,
+            "guard_name": "web"
+        }
+    },
+    "default_users": {
+        "admin": {
+            "name" : "Admin",
+            "email" : "admin@dingo.com",
+            "password" : "12345678"
+        },
+        "editor": {
+            "name" : "Editör",
+            "email" : "editor@dingo.com",
+            "password" : "12345678"
+        },
+        "user": {
+            "name" : "User",
+            "email" : "user@dingo.com",
+            "password" : "12345678"
+        }
+    }
+}

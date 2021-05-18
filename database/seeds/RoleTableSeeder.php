@@ -14,6 +14,7 @@ class RoleTableSeeder extends Seeder
     {
         Role::create([
             'name' => 'admin',
+            'slug' => 'admin',
             'description' => 'System Admin',
             'is_main' => 1,
             'is_see_admin' => 1,
@@ -21,6 +22,7 @@ class RoleTableSeeder extends Seeder
         ]);
         Role::create([
             'name' => 'editor',
+            'slug' => 'editor',
             'description' => 'System Editor',
             'is_main' => 1,
             'is_see_admin' => 1,
@@ -28,6 +30,7 @@ class RoleTableSeeder extends Seeder
         ]);
         Role::create([
             'name' => 'user',
+            'slug' => 'user',
             'description' => 'User',
             'is_main' => 1,
             'is_see_admin' => 0,

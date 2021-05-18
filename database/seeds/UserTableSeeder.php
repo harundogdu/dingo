@@ -13,20 +13,20 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Harun',
-            'email' => 'harundogdu@gmail.com',
+            'name' => 'Admin',
+            'email' => 'admin@dingo.com',
             'password' => bcrypt('12345678')
         ]); // Admin
 
         User::create([
-            'name' => 'Seher',
-            'email' => 'seherdogdu@gmail.com',
+            'name' => 'Editor',
+            'email' => 'editor@dingo.com',
             'password' => bcrypt('12345678')
         ]); // Editör
 
         User::create([
-            'name' => 'Gül',
-            'email' => 'guldogdu@gmail.com',
+            'name' => 'User',
+            'email' => 'user@dingo.com',
             'password' => bcrypt('12345678')
         ]); // Üye
     }

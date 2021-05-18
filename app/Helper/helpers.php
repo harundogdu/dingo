@@ -6,7 +6,7 @@ if (!function_exists('clearAllLogs')) {
         Artisan::call('route:clear');
         Artisan::call('config:clear');
         Artisan::call('cache:clear');
-        Artisan::call('key:generate'); 
+        Artisan::call('key:generate');
     }
 }
 /* check dbconnection  */
@@ -20,14 +20,28 @@ if (!function_exists('checkDBConnection')) {
         );
 
         if ($conn) {
-            return mysqli_select_db($conn, config('database.connections.' . env('DB_CONNECTION') . '.database'));           
+            return mysqli_select_db($conn, config('database.connections.' . env('DB_CONNECTION') . '.database'));
         }
         return false;
-    /*     try {
-            DB::connection()
-                ->getPdo();
-        } catch (Exception $e) {
-            abort($e instanceof PDOException ? 503 : 500);
-        } */
+        /*     try {
+                DB::connection()
+                    ->getPdo();
+            } catch (Exception $e) {
+                abort($e instanceof PDOException ? 503 : 500);
+            } */
     }
 }
+/* Get var */
+if (!function_exists('getVar')) {
+    function getVar($list)
+    {
+        $file = resource_path('vars/' . $list .'.json');
+        if(File::exists($file)){
+           return json_decode(file_get_contents($file),'true');
+        }
+        return [
+            "error"=>"file not found."
+        ];
+    }
+}
+
