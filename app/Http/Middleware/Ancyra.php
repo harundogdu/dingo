@@ -11,18 +11,18 @@ class Ancyra
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        if(!checkDBConnection() && !$request->is('install')){
+        if (!checkDBConnection() && !$request->is('install')) {
             clearAllLogs();
             return redirect()->route('install.index');
         }
 
-        if(checkDBConnection()){
+        if (checkDBConnection()) {
             DB::connection()->disableQueryLog();
             Helper::setRoles();
         }

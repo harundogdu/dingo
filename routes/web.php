@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/test','TestController@index');
+
 Route::group(['middleware'=>'guest'], function(){
     Route::resource('/install', 'InstallController');
 });
