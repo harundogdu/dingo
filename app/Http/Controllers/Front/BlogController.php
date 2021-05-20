@@ -14,7 +14,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('frontend.blog.index');
+        $bText = "Our Blog";
+        return view('frontend.blog.index',compact('bText'));
 
     }
 

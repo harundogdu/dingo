@@ -14,7 +14,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return view('frontend.menu.index');
+        $bText = "Food Menu";
+        return view('frontend.menu.index', compact('bText'));
     }
 
     /**

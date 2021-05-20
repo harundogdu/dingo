@@ -60,11 +60,13 @@ class Helper
         $permissions = Permission::all();
         $adminRole = Role::whereName('admin')->first();
         $adminUser = User::whereEmail('admin@dingo.com')->first();
-        //$editorRole = Role::whereName('editor')->first();
+        $editorRole = Role::whereName('editor')->first();
+        $editorUser = User::whereEmail('editor@dingo.com')->first();
         $userRole =  Role::whereName('user')->first();
         $webUser = User::whereEmail('user@dingo.com')->first();
 
         $adminUser->assignRole($adminRole);
+        $editorUser->assignRole($editorRole);
         $webUser->assignRole($userRole);
         $adminRole->givePermissionTo($permissions);
     }

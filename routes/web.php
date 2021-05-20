@@ -11,7 +11,7 @@ Route::group(['middleware' => 'guest'], function () {
 Auth::routes();
 
 /* Frontend routes */
-
+Route::get('/profile', 'Front\UserController@profile')->name('profile');
 Route::get('/', 'HomeController@index')->name('home');
 Route::resource('/about', 'Front\AboutController');
 Route::resource('/menu','Front\MenuController');

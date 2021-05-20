@@ -14,7 +14,8 @@ class AboutController extends Controller
      */
     public function index()
     {
-        return view('frontend.about.index');
+        $bText = "About Us";
+        return view('frontend.about.index', compact('bText'));
     }
 
     /**

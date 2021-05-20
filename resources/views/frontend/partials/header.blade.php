@@ -1,9 +1,10 @@
-<header class="main_menu @yield('navClass','home_menu')">
+<header class="main_menu @if (request()->is('/')) home_menu @endif">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="index.html"> <img src="{{asset('frontend/dingo/img/logo.png')}}" alt="logo"> </a>
+                    <a class="navbar-brand" href="{{ route('home') }}"> <img
+                            src="{{ asset('frontend/dingo/img/logo.png') }}" alt="logo"> </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -14,38 +15,57 @@
                         id="navbarSupportedContent">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('home')}}">Home</a>
+                                <a class="nav-link" href="{{ route('home') }}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('about.index')}}">About</a>
+                                <a class="nav-link" href="{{ route('about.index') }}">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('menu.index')}}">Menu</a>
+                                <a class="nav-link" href="{{ route('menu.index') }}">Menu</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('chefs.index')}}">Chefs</a>
+                                <a class="nav-link" href="{{ route('chefs.index') }}">Chefs</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('blog.index')}}">Blog</a>
+                                <a class="nav-link" href="{{ route('blog.index') }}">Blog</a>
                             </li>
-                            {{-- <li class="nav-item dropdown">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('contact.index') }}">Contact</a>
+                            </li>
+                            <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Blog
+                                    Account
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="blog.html">Blog</a>
-                                    <a class="dropdown-item" href="single-blog.html">Single blog</a>
-                                    <a class="dropdown-item" href="elements.html">Elements</a>
+                                    @guest
+                                        <a class="dropdown-item" href="{{ route('login') }}">Login</a>
+                                    @else
+                                        @role('admin|editor')
+                                        <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin
+                                            Dashboard</a>
+                                        @endrole
+                                        @role('user')
+                                        <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
+                                        @endrole
+                                        <div>
+                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                        document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                    @endguest
                                 </div>
-                            </li> --}}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('contact.index')}}">Contact</a>
                             </li>
                         </ul>
                     </div>
                     <div class="menu_btn">
-                        <a href="{{ route('admin.dashboard') }}" class="@yield('btnTop','btn_1 d-none d-sm-block')">book a tabel</a>
+                        <a href="#" class="@yield('btnTop','btn_1 d-none d-sm-block')">Book A Table</a>
                     </div>
                 </nav>
             </div>

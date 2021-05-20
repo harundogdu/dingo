@@ -14,7 +14,8 @@ class ChefsController extends Controller
      */
     public function index()
     {
-        return view('frontend.chefs.index');
+        $bText = "Experienced Chefs";
+        return view('frontend.chefs.index', compact('bText'));
 
     }
 

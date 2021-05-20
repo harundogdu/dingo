@@ -14,7 +14,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('frontend.contact.index');
+        $bText = "Contact Us";
+        return view('frontend.contact.index' , compact('bText'));
 
     }
 
