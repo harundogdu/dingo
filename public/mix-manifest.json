@@ -1,6 +1,11 @@
 {
+    "/frontend/dingo/js/app.js": "/frontend/dingo/js/app.js?id=4ca78258f8c8e7ce4aae",
     "/js/app.js": "/js/app.js?id=4ca78258f8c8e7ce4aae",
     "/admins/js/bootstrap.bundle.min.js.map": "/admins/js/bootstrap.bundle.min.js.map?id=4e47e3045b5cbd5b71ed",
     "/admins/js/sb-admin.js": "/admins/js/sb-admin.js?id=cd508bdd1fe03dcc0c1b",
-    "/admins/css/sb-admin.css": "/admins/css/sb-admin.css?id=d154141fa953603877ab"
+    "/admins/css/sb-admin.css": "/admins/css/sb-admin.css?id=d154141fa953603877ab",
+    "/frontend/dingo/css/style.css.map": "/frontend/dingo/css/style.css.map?id=2d4d4633507dcb89c7dd",
+    "/frontend/dingo/js/swiper.min.js.map": "/frontend/dingo/js/swiper.min.js.map?id=784ab60ae58b9bfe57b6",
+    "/frontend/dingo/js/dingo.js": "/frontend/dingo/js/dingo.js?id=07bc7d42314218135e97",
+    "/frontend/dingo/css/dingo.css": "/frontend/dingo/css/dingo.css?id=b330dac280252f54d704"
 }
