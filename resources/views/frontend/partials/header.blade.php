@@ -17,16 +17,16 @@
                                 <a class="nav-link" href="{{route('home')}}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('about')}}">About</a>
+                                <a class="nav-link" href="{{route('about.index')}}">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('menu')}}">Menu</a>
+                                <a class="nav-link" href="{{route('menu.index')}}">Menu</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('chefs')}}">Chefs</a>
+                                <a class="nav-link" href="{{route('chefs.index')}}">Chefs</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('blog')}}">Blog</a>
+                                <a class="nav-link" href="{{route('blog.index')}}">Blog</a>
                             </li>
                             {{-- <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button"
@@ -40,7 +40,7 @@
                                 </div>
                             </li> --}}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('contact')}}">Contact</a>
+                                <a class="nav-link" href="{{route('contact.index')}}">Contact</a>
                             </li>
                         </ul>
                     </div>

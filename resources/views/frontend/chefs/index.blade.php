@@ -16,9 +16,9 @@
         </div>
     </section>
 
-    <!--::chefs_part start::-->
-    @include('frontend.partials.chefs_part')
-    <!--::chefs_part end::-->
+     <!--::chefs_part start::-->
+     @include('frontend.partials.chefs_part')
+     <!--::chefs_part end::-->
 
     <!-- intro_video_bg start-->
     @include('frontend.partials.video')

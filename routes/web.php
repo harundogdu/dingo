@@ -13,11 +13,11 @@ Auth::routes();
 /* Frontend routes */
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/about','HomeController@about')->name('about');
-Route::get('/menu','HomeController@menu')->name('menu');
-Route::get('/chefs','HomeController@chefs')->name('chefs');
-Route::get('/contact','HomeController@contact')->name('contact');
-Route::get('/blog','HomeController@blog')->name('blog');
+Route::resource('/about', 'Front\AboutController');
+Route::resource('/menu','Front\MenuController');
+Route::resource('/chefs','Front\ChefsController');
+Route::resource('/contact','Front\ContactController');
+Route::resource('/blog','Front\BlogController');
 
 /* admin routes */
 
