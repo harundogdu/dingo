@@ -20,7 +20,7 @@ class Helper
         // foreach for roles
         foreach ($defaultSystemVars['default_role'] as $value) {
             if (!in_array(slugify($value['name']), $roles)) {
-                if ($value['name'] !== "user")
+                if (slugify($value['name']) !== "user")
                     $is_see_admin = 1;
                 else
                     $is_see_admin = 0;
