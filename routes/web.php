@@ -24,4 +24,12 @@ Route::resource('/blog', 'Front\BlogController');
 Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function () {
     Route::get('/', 'AdminController@index')->name('dashboard');
     Route::get('/routes', 'RouteController@index')->name('routes');
+    Route::resource('/abouts', 'AboutController');
+    Route::resource('/blogs', 'BlogController');
+    Route::resource('/chefs', 'ChefsController');
+    Route::resource('/contact', 'ContactController');
+    Route::resource('/menu', 'MenuController');
+    Route::resource('/permission', 'PermissionController');
+    Route::resource('/role', 'RoleController');
+    Route::resource('/user', 'UserController');
 });
