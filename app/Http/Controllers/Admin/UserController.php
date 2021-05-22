@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
+use App\Models\User;
+use DB;
+use Exception;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -14,7 +19,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.user');
+        $users = User::all()->load('roles');
+        return view('admin.pages.user', compact('users'));
     }
 
     /**
@@ -24,7 +30,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+        return view('admin.pages_ex.create-user', compact('roles'));
     }
 
     /**
@@ -33,9 +40,34 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+
+        DB::beginTransaction();
+
+        try {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password)
+            ]);
+            if ($user) {
+                $success = true;
+                $role = Role::find($request->role_id);
+                $saveRole = $user->assignRole($role);
+                $saveRole ? $success = true : $success = false;
+            } else {
+                $success = false;
+            }
+        } catch (Exception $e) {
+            $success = false;
+            $e->getMessage();
+        }
+        if ($success) {
+            DB::commit();
+        }
+
+        return redirect()->route('admin.user.index');
     }
 
     /**
@@ -46,7 +78,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return 'show';
     }
 
     /**
@@ -57,7 +89,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $roles = Role::all();
+        $user = User::findOrFail($id)->load('roles');
+        return view('admin.pages_ex.edit-user', compact('user', 'roles'));
     }
 
     /**
@@ -67,9 +101,17 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+       /*  return $request->all(); */
+        $role = Role::findOrFail($request->role_id);        
+        $old_role = Role::findOrFail($request->old_role_id);
+        $user->name = $request->name;
+        $user->email = $request->email;    
+        $user->save();
+        $user->removeRole($old_role);
+        $user->assignRole($role);            
+        return redirect()->route('admin.user.index');
     }
 
     /**
@@ -80,6 +122,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('admin.user.index');
     }
 }

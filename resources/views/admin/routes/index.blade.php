@@ -10,16 +10,18 @@
                     <caption>List of routes</caption>
                     <thead class="table-primary">
                         <tr>
+                            <th>Method</th>
                             <th>URI</th>
                             <th>Name</th>
                             <th>Type</th>
-                            <th>Method</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($routes as $route)
                             @if ($route->getPrefix() !== '_ignition' && $route->getPrefix() !== '_debugbar')
                                 <tr>
+                                    <td>{{$route->Methods()[0]}}</td>
                                     <td>{{ $route->uri }}</td>
                                     <td>{{ $route->getName() }}</td>
                                     <td>{{ $route->getPrefix() }}</td>

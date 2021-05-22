@@ -21,20 +21,9 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="{{ route('home') }}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Go to Page</span></a>
-    </li>
-
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
     <!-- Heading -->
     <div class="sidebar-heading">
-        Interface
+        Pages
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
@@ -46,9 +35,8 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
+                <h6 class="collapse-header">Route List</h6>
                 <a class="collapse-item" href="{{ route('admin.routes') }}">Routes</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
             </div>
         </div>
     </li>
@@ -63,7 +51,7 @@
         <div id="collapseUser" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('admin.user.index') }}">User List</a>
-                <a class="collapse-item" href="utilities-border.html">Add User</a>
+                <a class="collapse-item" href="{{ route('admin.user.create') }}">Add User</a>
             </div>
         </div>
     </li>
