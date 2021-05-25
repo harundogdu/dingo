@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
@@ -14,7 +16,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.role');
+        $roles = Role::all();
+        return view('admin.pages.role', compact('roles'));
     }
 
     /**
@@ -24,7 +27,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages_ex.create-role');
     }
 
     /**
@@ -35,7 +38,17 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $role = Role::create([
+            'name' => slugify($request->name),
+            'description' => $request->description,
+            'is_main' => 0,
+            'is_see_admin' => $request->is_see_admin
+        ]);
+
+        if ($role)
+            return redirect()->route('admin.role.index');
+        else
+            return redirect()->back()->withErrors(['description' => 'Hatalı İşlem']);
     }
 
     /**
@@ -57,7 +70,8 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::findOrFail($id);
+        return view('admin.pages_ex.edit-role', compact('role'));
     }
 
     /**
@@ -69,7 +83,40 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $role = Role::findOrFail($id);
+        if ($role) {
+            $role->name = slugify($request->name);
+            $role->description = $request->description;
+            $role->is_see_admin = $request->is_see_admin;
+            $role->save();
+
+            return redirect()->route('admin.role.index');
+        } else
+            return redirect()->back()->withErrors(['name' => 'Hatalı İşlem']);
+    }
+
+    public function menagePermissions($id)
+    {
+        $role = Role::findOrFail($id)->load('permissions');
+        $permissions = Permission::all();
+        return view('admin.pages_ex.role-menage-permission', compact('role', 'permissions'));
+    }
+
+    public function menagePermissionsStore(Request $request)
+    {        
+        $role = Role::find($request->role_id);
+        $permissions = Permission::all();
+        foreach ($permissions as $permission) {
+            $permission->removeRole($role);
+        }
+        $reqPermissions = $request->permissions;
+        if ($reqPermissions) {
+            foreach ($reqPermissions as $key => $value) {
+                $dbPerm = Permission::find($key);
+                $role->givePermissionTo($dbPerm);
+            }
+        }
+        return redirect()->route('admin.role.index');
     }
 
     /**

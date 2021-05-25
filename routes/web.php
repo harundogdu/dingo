@@ -31,5 +31,7 @@ Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'admin'])->name(
     Route::resource('/menu', 'MenuController');
     Route::resource('/permission', 'PermissionController');
     Route::resource('/role', 'RoleController');
+    Route::get('/menage-permissions/{role}', 'RoleController@menagePermissions')->name('role.menage-permissions');
+    Route::post('/menage-permissions', 'RoleController@menagePermissionsStore')->name('role.menage-permissions-store');
     Route::resource('/user', 'UserController');
 });

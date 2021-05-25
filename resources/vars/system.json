@@ -44,11 +44,6 @@
             "email" : "admin@dingo.com",
             "password" : "12345678"
         },
-        "editor": {
-            "name" : "Editör",
-            "email" : "editor@dingo.com",
-            "password" : "12345678"
-        },
         "user": {
             "name" : "User",
             "email" : "user@dingo.com",

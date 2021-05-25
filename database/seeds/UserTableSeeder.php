@@ -29,5 +29,6 @@ class UserTableSeeder extends Seeder
             'email' => 'user@dingo.com',
             'password' => bcrypt('12345678')
         ]); // Üye
+       
     }
 }

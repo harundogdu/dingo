@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard') }}">
@@ -66,7 +66,7 @@
         <div id="collapseRole" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('admin.role.index') }}">Role List</a>
-                <a class="collapse-item" href="utilities-border.html">Add Role</a>
+                <a class="collapse-item" href="{{ route('admin.role.create') }}">Add Role</a>
             </div>
         </div>
     </li>

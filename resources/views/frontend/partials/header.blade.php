@@ -39,7 +39,10 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @guest
-                                        <a class="dropdown-item" href="{{ route('login') }}">Login</a>
+                                            <a class="dropdown-item" href="{{ route('login') }}">Login</a>
+                                        @if (Route::has('register'))
+                                            <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        @endif
                                     @else
                                         @role('admin|editor')
                                         <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin
@@ -49,8 +52,9 @@
                                         <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                                         @endrole
                                         <div>
-                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                        document.getElementById('logout-form').submit();">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                                                document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}
                                             </a>
 

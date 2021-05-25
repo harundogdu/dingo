@@ -38,7 +38,7 @@ class PermissionController extends Controller
      */
     public function store(PermissionRequest $request)
     {
-        $permission = Permission::whereName(slugify($request->name));
+        $permission = Permission::whereName(slugify($request->name))->first();
         if (!$permission) {
             Permission::create([
                 'name' => slugify($request['name']),
