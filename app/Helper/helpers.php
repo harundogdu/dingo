@@ -1,5 +1,8 @@
 <?php
 /* clear function */
+
+use App\Flash;
+
 if (!function_exists('clearAllLogs')) {
     function clearAllLogs()
     {
@@ -135,6 +138,17 @@ if (!function_exists('toWord')) {
         $word = str_replace('_',' ' , $word);
         $word = str_replace('-',' ' , $word);
         return ucwords($word);
+    }
+}
+// SweetAlert
+if (!function_exists('flash')) {
+    function flash($title = null , $message = null)
+    {
+       $flash = app(Flash::class);
+       if(func_num_args() === 0){
+           return $flash;
+       }
+       return $flash->info($title, $message);
     }
 }
 

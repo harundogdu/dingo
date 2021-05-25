@@ -61,12 +61,12 @@ class UserController extends Controller
             }
         } catch (Exception $e) {
             $success = false;
-            $e->getMessage();
+            flash()->error('Başarısız','Bir Sorun Oluştu');
         }
         if ($success) {
             DB::commit();
+            flash()->success('Başarılı','Başarıyla Eklendi');
         }
-
         return redirect()->route('admin.user.index');
     }
 
