@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>                            
-        <<input type="hidden" name="old_role_id" value="{{ $old_role_id}}">
+        <input type="hidden" name="old_role_id" value="{{ $old_role_id}}">
         <button class="btn btn-block btn-info" type="submit">Update User</button>
         
     </form>

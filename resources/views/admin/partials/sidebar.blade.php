@@ -23,14 +23,14 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Pages
+        Settings
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
             aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-fw fa-table"></i>
             <span>Modüller</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -45,7 +45,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true"
             aria-controls="collapseUser">
-            <i class="fas fa-fw fa-wrench"></i>
+            <i class="fas fa-fw fa-user"></i>
             <span>User</span>
         </a>
         <div id="collapseUser" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
@@ -75,14 +75,14 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePermission"
             aria-expanded="true" aria-controls="collapsePermission">
-            <i class="fas fa-fw fa-wrench"></i>
+            <i class="fas fa-fw fa-cog"></i>
             <span>Permission</span>
         </a>
         <div id="collapsePermission" class="collapse" aria-labelledby="headingUtilities"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('admin.permission.index') }}">Permission List</a>
-                <a class="collapse-item" href="utilities-border.html">Add Permission</a>
+                <a class="collapse-item" href="{{ route('admin.permission.create') }}">Add Permission</a>
             </div>
         </div>
     </li>
@@ -91,7 +91,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true"
             aria-controls="collapsePage">
-            <i class="fas fa-fw fa-wrench"></i>
+            <i class="fas fa-fw fa-folder"></i>
             <span>Page</span>
         </a>
         <div id="collapsePage" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">

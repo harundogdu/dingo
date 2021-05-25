@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PermissionRequest;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
 {
@@ -14,7 +16,8 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.permission');
+        $permissions = Permission::all();
+        return view('admin.pages.permission', compact('permissions'));
     }
 
     /**
@@ -24,7 +27,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages_ex.create-permission');
     }
 
     /**
@@ -33,9 +36,19 @@ class PermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PermissionRequest $request)
     {
-        //
+        $permission = Permission::whereName(slugify($request->name));
+        if (!$permission) {
+            Permission::create([
+                'name' => slugify($request['name']),
+                'guard_name' => 'web',
+                'is_main' => 0
+            ]);
+            return redirect()->route('admin.permission.index');
+        } else {
+            return redirect()->back()->withErrors(['name' => 'Lütfen Olmayan Bir Yetki Giriniz!']);
+        }
     }
 
     /**
@@ -57,7 +70,8 @@ class PermissionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $permission = Permission::findOrFail($id);
+        return view('admin.pages_ex.edit-permission', compact('permission'));
     }
 
     /**
@@ -68,8 +82,15 @@ class PermissionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {       
+        $permission = Permission::findOrFail($id);
+        if ($permission) {
+            $permission->name = slugify($request->name);
+            $permission->save();
+            return redirect()->route('admin.permission.index');
+        } else {
+            return redirect()->back()->withErrors(['name' => 'Hatalı Kullanım!']);
+        }
     }
 
     /**
@@ -80,6 +101,12 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $permission = Permission::findOrFail($id);
+        if($permission && $permission->is_main !== 1){
+            $permission->delete();
+            return redirect()->route('admin.permission.index');
+        }else{
+            return redirect()->route('admin.permission.index')->withErrors(['name'=>'Hatalı Talep']);
+        }
     }
 }
